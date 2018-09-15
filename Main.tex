@@ -1,0 +1,76 @@
+\documentclass{beamer}
+\usefonttheme{serif}
+
+\mode<presentation> {
+
+\usetheme{Frankfurt}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{tikz-cd}
+\usetikzlibrary{positioning, calc}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\usepackage{mathtools, amsfonts}
+
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Hom}{Hom}
+
+\usepackage{graphicx, animate} % Allows including images and animation
+\graphicspath{ {/home/matthew/Documents/Presentations/2016/SCSU/LaTeX/Images/} }
+
+\setbeamertemplate{headline}{}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[TDA]{Topology and Data Analysis} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Dr. Matthew Zabka} % Your name
+\institute[SMSU] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Southwest Minnesota State University \\ % Your institution for the title page
+}
+\date{26 October 2016} % Date, can be changed to a custom date
+
+%-----------------------------------------------------------------------------------------
+
+\begin{document}
+\bibliographystyle{amsalpha}
+%-----------------------------------------------------------
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+%----------------------------------------------------------
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+%------------------------------------------------
+\section{Topology} 
+\input{Topology}
+%-------------------------------------------------------
+\section{Algebraic Topolgy}
+\input{Alg_Top}
+%-------------------------------------------------------
+\section{Topological Data Analysis}
+\input{TDA}
+%-------------------------------------------------------
+\begin{frame}
+\frametitle{Thank you!}
+\center{\Huge{Questions?}}
+\end{frame}
+%-------------------------------------------------------
+\begin{frame}
+\bibliography{Master}
+\end{frame}
+%-------------------------------------------------------
+
+\end{document} 
