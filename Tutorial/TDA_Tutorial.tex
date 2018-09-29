@@ -100,13 +100,75 @@ As we saw yesterday:
 	\begin{itemize}
 	\item<2-> $\beta_2$ counts the number of voids.
 	\item<3-> What is $\beta_2$ of the following space?
-	%\begin{center}
-	%\includegraphics[scale=0.5]{/home/matthew/Documents/Junk/images/S2VS2}
-	%\end{center}
+	\begin{center}
+	\includegraphics[scale=0.5]{images/S2VS2}
+	\end{center}
 	\item<4-> $\beta_2 = 2$
-	\item<5-> What are $\beta_0$ and $beta_1$?
+	\item<5-> What are $\beta_0$ and $\beta_1$?
 	\item<6-> $\beta_0 = 1$ and $\beta_1 = 0$.
 	\end{itemize}
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------
+\begin{frame}{Persistent Homology in Dimension 0 (Clustering)}
+\begin{center}
+\begin{tikzpicture}[scale = 1]
+    \draw plot[mark=*, mark size = 0.5, only marks] file {data/clust1.txt};
+    \draw plot[mark=*, mark size = 0.5, only marks] file {data/clust2.txt};
+\end{tikzpicture}
+\begin{itemize}
+\item<1-> Start with a set of data in a metric space. Set $r=0$.
+\item<2-> Increase $r$. Create an edge between two points whenever the distance between them is less than $r$. This creates a graph.
+\item<3-> If a connected component \textit{persist} over a large range of $r$, we can conclude something about the structure of the data.
+\item<4-> In this case, we should expect to see two connected components that persist over a large range of $r$. 
+\end{itemize}
+\end{center}
+\end{frame}
+%--------------------------------------------------------
+\begin{frame}{Persistent Homology in Dimension 0 (Clustering)}
+\begin{center}
+\begin{tikzpicture}[scale = 1]
+    \draw plot[mark=*, mark size = 0.5] file {data/clust1.txt};
+    \draw plot[mark=*, mark size = 0.5] file {data/clust2.txt};
+\end{tikzpicture}
+\end{center}
+\begin{itemize}
+\item<1-> A graph similar to this should persist over a large range of $r$.
+\item<2-> How could we see the clusters if these data did not lie in $\mathbb{R}^2$?
+\end{itemize}
+\end{frame}
+%------------------------------------------------------/home/matthew/Documents/Junk/--
+\begin{frame}{Persistent Homology in Dimension 0 (Clustering)}
+This frame will be about RIPSER.  Maybe a new section?  Or should the new section start earlier?
+http://live.ripser.org/
+\end{frame}
+%------------------------------------------------------/home/matthew/Documents/Junk/--
+\begin{frame}{Persistent Homology in Dimension 1}
+\begin{itemize}
+\item<1-> Suppose we have data that lie on the circle.
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}[scale = 1.5]
+    \draw plot[mark=*, mark size = 0.5, only marks] file {data/data2.txt};
+\end{tikzpicture}
+\caption{An unrealistic example, where data lie perfectly on $S^1$.}
+\end{figure}
+\end{center}
+\item<2-> Wait \ldots data are never this nice.
+\end{itemize}
+\end{frame}
+%------------------------------------------------------/home/matthew/Documents/Junk/--
+\begin{frame}{Persistent Homology in Dimension 1}
+\begin{itemize}
+\item<1-> Suppose we have data that \textbf{almost} lie on the circle.
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}[scale = 1.5]
+    \draw plot[mark=*, mark size = 0.5, only marks] file {data/data3.txt};
+\end{tikzpicture}
+\caption{A still unrealistic example, where data lie in $\mathbb{R}^2$.}
+\end{figure}
+\end{center}
 \end{itemize}
 \end{frame}
 
