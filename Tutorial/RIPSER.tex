@@ -45,7 +45,8 @@
 \begin{itemize}
 \item<1-> Go to github to get the data. These data are stored as a point cloud.
 \begin{center}
-\footnotesize{\url{https://github.com/MatthewZabka/TDAintro.git}}
+PUT URL HERE
+%\footnotesize{\url{https://github.com/MatthewZabka/TDAintro.git}}
 \end{center}
 \item<2-> Input \texttt{data1.txt} into RISPER
 \begin{center}
@@ -82,7 +83,23 @@
 \end{figure}
 \end{center}
 \item<2-> Why is this also not realistic?
-\item<3-> Input \texttt{data3.txt} and \texttt{data4.txt} into RIPSER.
-\item<4-> What is the shape of \texttt{data4.txt}?
+\end{itemize}
+\end{frame}
+%------------------------------------------------------
+\begin{frame}{Persistent Homology}
+\begin{center}
+
+\begin{figure}
+\begin{tikzpicture}[scale = 0.5]
+    \draw plot[mark=*, mark size = 0.5, only marks] file {data/data3.txt};
+\end{tikzpicture}
+\caption{\texttt{data3.txt}.}
+\end{figure}
+\end{center}
+\begin{itemize}
+\item Now it is your turn!
+\item Input \texttt{data3.txt} into RIPSER. Confirm that one generator for $H_0$ and one generator for $H_1$ persist.
+\item Try inputting \texttt{data4.txt} into RIPSER up to distance 2. What can you say about the data's shape?
+\item Try some real data! \texttt{data5.txt} (up to distance 150).
 \end{itemize}
 \end{frame}
