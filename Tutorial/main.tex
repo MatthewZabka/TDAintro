@@ -1,0 +1,71 @@
+\documentclass[handout]{beamer}
+\usefonttheme{serif}
+
+\mode<presentation> {
+
+\usetheme{Frankfurt}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+\usepackage[T1]{fontenc}
+\usepackage{tikz-cd}
+\usetikzlibrary{positioning, calc}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\usepackage{mathtools}
+\usepackage{hyperref}
+
+\newcommand{\nul}{\mathrm{nul}}
+\newcommand{\rank}{\mathrm{rank}}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Hom}{Hom}
+
+\usepackage{graphicx, hyperref, courier} % Allows including images
+
+\setbeamertemplate{headline}{}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{A Tutorial in Topological Data Analysis} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Matthew Zabka}
+\institute[SMSU] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+ % Your institution for the title page
+}
+%\titlegraphic{\includegraphics[scale=0.3]{images/SMSU}}
+\date{13. September 2018} % Date, can be changed to a custom date
+
+\begin{document}
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+%------------------------------------------
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents 
+\end{frame}
+%---------------------------------------
+\section{A Short Review}
+\input{review.tex}
+%-------------------------------------------
+\section{InteractiveJPDwB}
+\input{JPDwB.tex}
+%-------------------------------------------
+\section{RIPSER}
+\input{RIPSER.tex}
+%--------------------------------------------
+\section{RIVET}
+\input{RIVET.tex}
+%---------------------------------------
+\section{References}
+\begin{frame}
+\bibliographystyle{abbrv}
+\bibliography{master}
+\end{frame}
+
+\end{document} 
