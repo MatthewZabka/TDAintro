@@ -3,11 +3,14 @@ As we saw yesterday:
 \begin{itemize}
 \item<2-> Topology provides many descriptors about the `shape' of a space.
 \item<3-> The one of these descriptors -- homology -- is computable, which makes it particularly useful in applications.
-\item<4-> Given a topological space $T$ and a field $\mathbb{F}$, the $n$-th homology group $H_n(T;\mathbb{F})$ assigns 
-\item<5-> In particular, the rank of the $n$-th homology group is called the $n$-th Betti number and is denoted
+\item<4-> Given a topological space $T$ the $n$-th homology group $H_n(T)$ -- in very basic terms -- has a generator for each $n$-dimensional hole in $T$. 
+\item<5-> So the rank of the $n$-th homology group, called the $n$-th \textbf{Betti number}, denoted
 	\[
-	\beta_n := \textrm{rank}(H_n(T;\mathbb{F})).
+	\beta_n := \textrm{rank}(H_n(T)),
 	\]
+is the number of $n$-dimensional holes in $T$.
+\item<6-> $\beta_1$ counts the number of holes in $T$.
+\item<7-> $\beta_2$ counts the number of voids in $T$ \ldots
 \end{itemize}
 \end{frame}
 %---------------------------------------------------------
@@ -15,13 +18,14 @@ As we saw yesterday:
 \begin{itemize}
 \item The $n$-th Betti number tells us about the number of $n$-dimensional holes in a space.
 	\begin{itemize}
+	\item<1-> What is a $0$-th demensional hole?
 	\item<2-> $\beta_0$ counts the number of connected components in a space.
 	\item<3-> What is $\beta_0$ of the following space?\\
 	\
 	\begin{center}
 	{\fontsize{50pt}{1pt}\selectfont \={I}}
 	\end{center}
-	\item<4-> $\beta_0 = 3$
+	\item<4-> $\beta_0 = 2$
 	\end{itemize}
 \end{itemize}
 \end{frame}
