@@ -1,9 +1,12 @@
 \documentclass[usenames,dvipsnames,aspectratio=1610]{beamer}
 
-\setbeamertemplate{nagivation symbols}{}
+%\setbeamertemplate{nagivation symbols}{}
 %%% Standard includes
 \usepackage{amsthm, amssymb, amsmath, hyperref, xypic}
-\usepackage{lmodern,subfig,multicol}
+\usepackage{subfig,multicol}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 
 \usetheme[sectionpage=none]{metropolis}
 
@@ -28,7 +31,7 @@
 %\addtolength{\voffset}{-2.5cm}
 %\fancyhead{}
 %\doublespacing
-\usepackage{enumitem}
+%\usepackage{enumitem} %%enumitem is incompatible with beamer
 %\setitemize{noitemsep}
 %\linespacing{1.1em}
 
@@ -147,6 +150,35 @@
 
 \metroset{block=fill}
 
+\begin{frame}{Outline}
+  \begin{enumerate}
+    \item The idea of homology
+    \item Persistent Homology
+    \item Mapper
+    \item Implementations
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algebraic Topology}
+  \begin{block}{What is algebraic topology?}
+    Topology is a branch of mathematics which is good at extracting global
+    qualitative features from complicated geometric structures. 
+    
+    Algebraic topology provides a set of {\em algebraic} descriptors to topological objects.
+  \end{block}
+  \pause
+
+  \begin{block}{Questions and scope}
+    Topological questions surround different notions of connectedness:
+    connected components, loops, voids, etc.
+
+    Two topological spaces are equivalent through the lens of topology if one
+    can be {\em continuously} deformed to the other. 
+  \end{block}
+  \center{\fontsize{40}{40}\selectfont \textsf{A B C D}}
+\end{frame}
+
 \begin{frame}
   \frametitle{Algebraic Topology}
   \begin{block}{What is algebraic topology?}
@@ -161,32 +193,50 @@
     connected components, loops, voids, etc.
 
     Two topological spaces are equivalent through the lens of topology if one
-    can be {\em continuously} deformed to the other.
+    can be {\em continuously} deformed to the other. 
   \end{block}
-
- show some examples
+  \center{\fontsize{40}{40}\selectfont \textsf{ {\color{red} A} B C {\color{red} {D}}}}
 \end{frame}
 
 \begin{frame}{Invariants of topological spaces}
-  Algebraic Topology assigns {\em invariants} to topological spaces.
-
-  If two spaces are the same, then the invariants must be the same.
-
-  If the invariants are not the same, then the two spaces are not the same.
+  \begin{itemize}
+    \item Algebraic Topology assigns {\em invariants} to topological spaces.
+      These take the form of groups, rings, fields, vector spaces, etc.
+    \item Our computations will be over the field $\F_2$, so it suffices to record
+      only the {\em dimensions} of vector spaces. 
+    \item If two spaces are the same, then the invariants must be the same. 
+      
+      If the invariants are not the same, then the two spaces are not the same.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Topological Data Analysis}
-
   \begin{alertblock}{Goal}
     {\bf Topological data analysis uses topology to summarize and study the
     `shape' of data.}
   \end{alertblock}
-\end{frame}
+  \pause
+  Examples:
+  \begin{itemize}
+  \begin{multicols}{2}
+    \item motion tracking problems
+    \item analysis of brain arteries
+    \item viral evolution
+    \item understanding neural codes
+    \item analysis of phase transitions
+    \item financial crash analysis
+    \item understanding neural structure
+    \item understanding neural correlations
+    \item piecewise constant signal analysis
+    \item breast cancer mutational profiles
+    \item steganalysis
+    \item sphere packing and colloid
+    \item population activity in the visual cortex
+    \item fMRI data
+    \item biomolecular data
+    \end{multicols}
 
-
-\begin{frame}
-  \frametitle{Applications}
-  big list of where TDA has been used.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -202,7 +252,7 @@ Persistent homology consists of the following pipeline: \\
    % Place nodes
     \node [block] (data) {Data};%Underling Probability Space
     \node [block, right of=data, node distance = 3cm] (simplex) {Filtered Simplicial Complex};
-    \node [block, right of=simplex,node distance = 3cm] (pd) {Persistence Diagram};
+    \node [block, right of=simplex,node distance = 3cm] (pd) {Barcodes};
     \node [block, right of=pd, node distance = 3cm] (stat) {Statistics};
    % Draw edges
     \path [line, postaction={decorate}] (data) -- (simplex);
@@ -370,12 +420,14 @@ Persistent homology consists of the following pipeline: \\
 \draw[color=blue,line width=1mm] (4.7,4.5) -- (4.8,3.2) -- (5,2.3) -- (6.2,2.8) -- (6.9,3.2) -- (6.3,3.9) -- (5.5,4.7) -- cycle;
 }
 \end{tikzpicture}
+
+\uncover<2->{$\beta_k = $ rank of homology in degree $k$}
 \end{center}
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{Overview of TDA}
+  \frametitle{Overview of PH}
 \centering
 \begin{tikzpicture}[node distance = 2.5cm, auto, scale=0.8, decoration={
       markings,
@@ -385,7 +437,7 @@ Persistent homology consists of the following pipeline: \\
    % Place nodes
     \node [block] (data) {Data};
     \node [block, right of=data, node distance = 5cm] (simplex) {Filtered Simplicial Complex};
-    \node [block, right of=simplex,node distance = 3cm] (pd) {Persistence Diagram};
+    \node [block, right of=simplex,node distance = 3cm] (pd) {Barcodes};
     \node [block, right of=pd, node distance = 3cm] (stat) {Statistics};
    % Draw edges
     \path [line, postaction={decorate}] (data) -- (simplex) 
@@ -401,21 +453,97 @@ Persistent homology consists of the following pipeline: \\
     A {\em point cloud} $P$ is a finite metric space.
   \end{block}
 
-  \begin{block}{Definition}
-    The {\em Vietoris-Rips} complex of $P$ of parameter $i \in \R$ is the 
-    simplicial complex with one $k$-simplex for every $k+1$ points with maximum 
-    pairwise distance at most $i$.
-  \end{block}
-
-  couple pictures of this.
+  \begin{center}
+    \only<+>{\includegraphics[trim=0 0 0 1cm, clip, scale=0.7]{VR_ex_r1.PNG}}
+    \only<+>{\includegraphics[trim=0 0 0 1cm, clip, scale=0.7]{VR_ex_r2.PNG}}
+    \only<+>{\includegraphics[trim=0 0 0 1cm, clip, scale=0.7]{VR_ex_r3.PNG}}
+  \end{center}
 \end{frame}
 
+\begin{frame}{Vietoris-Rips parameter}
+  \begin{block}{Question}
+  How do we choose the correct radius for the Vietoris-Rips construction?
+\end{block}
 
+\pause
+Often, there is no one ``right'' choice.
+\begin{center}
+  \only<+>{\includegraphics[trim= 0 0 0 1cm, clip, scale=0.7]{VR_ex_1.PNG}}
+  \only<+>{\includegraphics[trim= 0 0 0 1cm, clip, scale=0.7]{VR_ex_2.PNG}}
+  \only<+>{\includegraphics[trim= 0 0 0 1cm, clip, scale=0.7]{VR_ex_4.PNG}}
+\end{center}
+\end{frame}
 
 \begin{frame}{Processing demo}
+  \begin{center}
+  Processing demo
+\end{center}
 \end{frame}
 
 \begin{frame}{TDA for Data Analysis}
 
 \end{frame}
+
+\begin{frame}{Overview of PH}
+\centering
+\begin{tikzpicture}[node distance = 2.5cm, auto, scale=0.8, decoration={
+      markings,
+      mark=at position 1 with {\arrow[scale=2,black]{latex}};
+    }
+  ]
+   % Place nodes
+    \node [block] (data) {Data};
+    \node [block, right of=data, node distance = 3cm] (simplex) {Filtered Simplicial Complex};
+    \node [block, right of=simplex,node distance = 5cm] (pd) {Barcodes};
+    \node [block, right of=pd, node distance = 3cm] (stat) {Statistics};
+   % Draw edges
+    \path [line, postaction={decorate}] (data) -- (simplex);
+    \path [line, postaction={decorate}] (simplex) -- (pd)
+    node [midway, label=above:Homology] {};
+    \path [line, postaction={decorate}] (pd) -- (stat);
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Barcodes}
+  \begin{itemize}
+    \item The barcode provides a summary of how the homology changes as the
+      radius varies in the Vietoris-Rips construction.
+    \item We look for topological features which `persist' over many values of radii.
+  \end{itemize}
+
+  The barcode typically looks like (picture).
+\end{frame}
+
+
+\begin{frame}{Overview of PH}
+\begin{tikzpicture}[node distance = 2.5cm, auto, scale=0.8, decoration={
+      markings,
+      mark=at position 1 with {\arrow[scale=2,black]{latex}};
+    }
+  ]
+   % Place nodes
+    \node [block] (data) {Data};
+    \node [block, right of=data, node distance = 3cm] (simplex) {Filtered Simplicial Complex};
+    \node [block, right of=simplex,node distance = 3cm] (pd) {Barcodes};
+    \node [block, right of=pd, node distance = 5cm] (stat) {Statistics};
+   % Draw edges
+    \path [line, postaction={decorate}] (data) -- (simplex);
+    \path [line, postaction={decorate}] (simplex) -- (pd);
+    \path [line, postaction={decorate}] (pd) -- (stat)
+    node [midway, label=above:Vectorization] {};
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Vectorization}
+  \begin{itemize}
+    \item The barcode provides a convenient visualization of persistent topological
+      features of potentially high-dimensional data sets.
+    \item {\color{blue} Easy:} Clustering, certain hypothesis testing.
+    \item {\color{red} Hard:} calculating averages, understanding variances, and classification.
+    \item {\color{green} Reason:} No good metric space structure on barcodes directly.
+  \end{itemize}<++>
+\end{frame}
+
+
+
 \end{document}
