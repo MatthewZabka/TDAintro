@@ -59,8 +59,12 @@ plot(E[,c(1,3)])
 write.table(E, file = "data6.txt", row.names = FALSE, col.names = FALSE)
 
 # data7 will use data 3 and have new, outlier data in the middle of the circle
-
-temp1 <- rbind(c(-0.3,-0.4), c(-0.25,0.5), c(-0.5,0.1), c(0, 0), c(0.1,-0.5), c(0.5,-0.3), c(0.2,0.4), c(0.4,0.1))
-RIVETexample1 <- rbind(S1e, temp1)
-plot(RIVETexample1)
-write.table(RIVETexample1, file = "data7.txt", row.names = FALSE, col.names = FALSE)
+data7wdensity <- read.table(file = "data7wdensity.txt")
+data7 <- data7wdensity[,c(1,2)]
+fromO <- sqrt(data7[,1]^2 + data7[,2]^2)
+noise_index <- which(fromO<2)
+noise <- data7[which(fromO<2), ]
+data7nonoise <- data7[-which(fromO<2),]
+write.table(data7, file = "data7.txt", row.names = FALSE, col.names = FALSE)
+write.table(noise, file = "data7noise.txt", row.names = FALSE, col.names = FALSE)
+write.table(data7nonoise, file = "data7nonoise.txt", row.names = FALSE, col.names = FALSE)
