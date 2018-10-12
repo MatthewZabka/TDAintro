@@ -2,13 +2,14 @@
 
 %\setbeamertemplate{nagivation symbols}{}
 %%% Standard includes
-\usepackage{amsthm, amssymb, amsmath, hyperref, xypic}
+\usepackage{amsthm, amssymb, amsmath, hyperref}
 \usepackage{subfig,multicol}
 
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 
 \usetheme[sectionpage=none]{metropolis}
+\setbeamertemplate{subsection in toc}[sections numbered]
 
 %%% Graphics 
 \usepackage{tikz}
@@ -45,14 +46,14 @@
 %\usepackage{multicol}
 
 %%% Bibliography
-%\usepackage[
-%backend=bibtex,
-%style=numeric,
-%block=space
-%]{biblatex}
-%\addbibresource{refs.bib}
-%\renewbibmacro{in:}{}
-%\DeclareNameAlias{sortname}{first-last}
+\usepackage[
+backend=bibtex,
+style=numeric,
+block=space
+]{biblatex}
+\addbibresource{ref1.bib}
+\renewbibmacro{in:}{}
+\DeclareNameAlias{sortname}{first-last}
 
 %%% Fonts
 %\usepackage{helvet}
@@ -151,14 +152,10 @@
 \metroset{block=fill}
 
 \begin{frame}{Outline}
-  \begin{enumerate}
-    \item The idea of homology
-    \item Persistent Homology
-    \item Mapper
-    \item Implementations
-  \end{enumerate}
+  \tableofcontents
 \end{frame}
 
+\section{Crash course in algebraic topology}
 \begin{frame}
   \frametitle{Algebraic Topology}
   \begin{block}{What is algebraic topology?}
@@ -210,56 +207,52 @@
   \end{itemize}
 \end{frame}
 
+\section{Persistent Homology and examples}
 \begin{frame}{Topological Data Analysis}
   \begin{alertblock}{Goal}
     {\bf Topological data analysis uses topology to summarize and study the
     `shape' of data.}
   \end{alertblock}
+  \vspace{-0.1in}
   \pause
   Examples:
+  \vspace{-0.1in}
   \begin{itemize}
   \begin{multicols}{2}
-    \item motion tracking problems
-    \item analysis of brain arteries
-    \item viral evolution
-    \item understanding neural codes
-    \item analysis of phase transitions
-    \item financial crash analysis
-    \item understanding neural structure
-    \item understanding neural correlations
-    \item piecewise constant signal analysis
-    \item breast cancer mutational profiles
-    \item steganalysis
-    \item sphere packing and colloid
-    \item population activity in the visual cortex
-    \item fMRI data
-    \item biomolecular data
-    \end{multicols}
+  \item motion tracking problems,
+  \item analysis of brain arteries,
+  \item analysis of social and spatial networks, including neurons, genens, Twitter,
+    co-authorship,
+  \item study of viral evolution,
+  \item measurement of protein compressibility,
+  \item analysis of phase transitions,
+  \item financial crash analysis,
+  \item piecewise constant signal analysis,
+  \item study of cosmic web and its filamentary structure,
+  \item identification of breast cancer subtypes,
+  \item study of plant root systems,
+  \item discrimination of EEG signals before and during epileptic seizures,
+  \item steganalysis of images,
+  \item sphere packing and colloid,
+  \item population activity in the visual cortex,
+  \item fMRI data
+  \end{multicols}
 
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Overview of PH}
-\centering
-Persistent homology consists of the following pipeline: \\ 
-\vspace{0.5in}
-\begin{tikzpicture}[node distance = 2.5cm, auto, scale=0.8, decoration={
-      markings,
-      mark=at position 1 with {\arrow[scale=2,black]{latex}};
-    }
-  ]
-   % Place nodes
-    \node [block] (data) {Data};%Underling Probability Space
-    \node [block, right of=data, node distance = 3cm] (simplex) {Filtered Simplicial Complex};
-    \node [block, right of=simplex,node distance = 3cm] (pd) {Barcodes};
-    \node [block, right of=pd, node distance = 3cm] (stat) {Statistics};
-   % Draw edges
-    \path [line, postaction={decorate}] (data) -- (simplex);
-    \path [line, postaction={decorate}] (simplex) -- (pd);
-    \path [line, postaction={decorate}] (pd) -- (stat);
-  \end{tikzpicture}
+\begin{frame}{Overview of TDA}
+  Topological data analysis comes in a variety of flavors. 
+  
+  The two most popular methods in TDA are
+  \begin{center}
+    1. Persistent Homology \\
+    2.  Mapper
+  \end{center}
 \end{frame}
+
+
+
 
 \begin{frame}
   \frametitle{Simplicial Complexes}
@@ -425,13 +418,33 @@ Persistent homology consists of the following pipeline: \\
 \end{center}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Overview of PH}
+\centering
+Persistent homology consists of the following pipeline: \\ 
+\vspace{0.5in}
+\begin{tikzpicture}[node distance = 2.5cm, auto, scale=0.8, decoration={
+      markings,
+      mark=at position 1 with {\arrow[scale=2,black]{latex}};
+    }
+  ]
+   % Place nodes
+    \node [block] (data) {Data};%Underling Probability Space
+    \node [block, right of=data, node distance = 3cm] (simplex) {Filtered Simplicial Complex};
+    \node [block, right of=simplex,node distance = 3cm] (pd) {Barcodes};
+    \node [block, right of=pd, node distance = 3cm] (stat) {Statistics};
+   % Draw edges
+    \path [line, postaction={decorate}] (data) -- (simplex);
+    \path [line, postaction={decorate}] (simplex) -- (pd);
+    \path [line, postaction={decorate}] (pd) -- (stat);
+  \end{tikzpicture}
+\end{frame}
 
 \begin{frame}
   \frametitle{Overview of PH}
 \centering
 \begin{tikzpicture}[node distance = 2.5cm, auto, scale=0.8, decoration={
-      markings,
-      mark=at position 1 with {\arrow[scale=2,black]{latex}};
+      markings, mark=at position 1 with {\arrow[scale=2,black]{latex}};
     }
   ]
    % Place nodes
@@ -449,14 +462,22 @@ Persistent homology consists of the following pipeline: \\
 
 \begin{frame}
   \frametitle{Simplicial Complexes from Point data}
-  \begin{block}{Definition}
+  \only<1>{\begin{block}{Definition}
     A {\em point cloud} $P$ is a finite metric space.
   \end{block}
+}
+\only<2->{\begin{block}{Definition}
+    The Vietoris-Rips complex is a simplicial complex built out of a point cloud. Put a circle
+    of radius $r$ around each point. Add an edge whenever two circles overlap. 
+    Add a triangle whenever three circles overlap.
+\end{block}
+}
+  
 
   \begin{center}
     \only<+>{\includegraphics[trim=0 0 0 1cm, clip, scale=0.7]{VR_ex_r1.PNG}}
-    \only<+>{\includegraphics[trim=0 0 0 1cm, clip, scale=0.7]{VR_ex_r2.PNG}}
-    \only<+>{\includegraphics[trim=0 0 0 1cm, clip, scale=0.7]{VR_ex_r3.PNG}}
+    \only<+>{\includegraphics[trim=0 0 0 1cm, clip, scale=0.6]{VR_ex_r2.PNG}}
+    \only<+>{\includegraphics[trim=0 0 0 1cm, clip, scale=0.6]{VR_ex_r3.PNG}}
   \end{center}
 \end{frame}
 
@@ -465,7 +486,6 @@ Persistent homology consists of the following pipeline: \\
   How do we choose the correct radius for the Vietoris-Rips construction?
 \end{block}
 
-\pause
 Often, there is no one ``right'' choice.
 \begin{center}
   \only<+>{\includegraphics[trim= 0 0 0 1cm, clip, scale=0.7]{VR_ex_1.PNG}}
@@ -478,10 +498,6 @@ Often, there is no one ``right'' choice.
   \begin{center}
   Processing demo
 \end{center}
-\end{frame}
-
-\begin{frame}{TDA for Data Analysis}
-
 \end{frame}
 
 \begin{frame}{Overview of PH}
@@ -511,9 +527,23 @@ Often, there is no one ``right'' choice.
     \item We look for topological features which `persist' over many values of radii.
   \end{itemize}
 
-  The barcode typically looks like (picture).
+  Barcodes typically look like:
+
+  \begin{minipage}{\textwidth}
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \includegraphics[scale=0.25]{betti1.png}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \includegraphics[scale=0.25]{betti2.png}
+  \end{minipage}
+\end{minipage}
 \end{frame}
 
+\begin{frame}{Processing demo}
+  \begin{center} Processing demo \end{center}
+  \end{frame}
 
 \begin{frame}{Overview of PH}
 \begin{tikzpicture}[node distance = 2.5cm, auto, scale=0.8, decoration={
@@ -537,13 +567,196 @@ Often, there is no one ``right'' choice.
 \begin{frame}{Vectorization}
   \begin{itemize}
     \item The barcode provides a convenient visualization of persistent topological
-      features of potentially high-dimensional data sets.
-    \item {\color{blue} Easy:} Clustering, certain hypothesis testing.
-    \item {\color{red} Hard:} calculating averages, understanding variances, and classification.
-    \item {\color{green} Reason:} No good metric space structure on barcodes directly.
-  \end{itemize}<++>
+      features of potentially high-dimensional data sets. With barcodes:
+      \begin{itemize}
+	\item Clustering, certain hypothesis testing are {\color{blue} easy},
+	\item Calculating averages, understanding variances, and classification are {\color{red}
+	  hard}.
+	\item {\color{green} Reason:} No good metric space structure on barcodes directly.
+      \end{itemize}
+    \item We need a way of {\em vectorizing} the output. If we can map the barcodes into
+      a vector space, we can add, take differences, averages, etc. 
+    \item We can implement more advanceed statistical methods, e.g., machine learning
+      techniques like SVM.
+  \end{itemize}
 \end{frame}
 
+\begin{frame}{Persistence Landscapes}
+  Relatively simple, yet powerful method of vectorization.
+  \begin{minipage}{\textwidth}
+    \begin{minipage}{0.7\textwidth}
+      \begin{center}
+	\includegraphics[scale=0.3]{l1.png}
+
+	\includegraphics[scale=0.3]{l3.png}
+      \end{center}
+    \end{minipage}
+    \begin{minipage}{0.25\textwidth}
+      Each 
+      \[
+	\lambda_k: \R \to \R \, .
+      \] 
+      Functions can be added, subtracted, averaged, etc.
+
+    \end{minipage}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{PH example: mathematical data}
+  \begin{itemize}
+    \item We sample 1000 points from a noisy sphere and a noisy torus.
+      \begin{center}
+	\includegraphics[scale=0.5]{sphere_tor.png}
+      \end{center}
+    \item Can we use persistent homology to distinguish these spaces?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{PH example: mathematical data}
+  \begin{itemize}
+    \item Randomly choose 10 points from each space. Build the VR complex on 
+      those 10 points, compute $\beta_0$ barcodes, and build landscapes. 
+    \item Repeat this 10,000 times. Average all the sphere landscapes and average
+      all the torus landscapes.
+      \begin{center}
+	\includegraphics[scale=0.4]{pl_compare1.png}
+	\pause
+	\includegraphics[scale=0.4]{pl_comp2.png}
+      \end{center}
+  \end{itemize}
+  Doing a permutation test with 10,000 repititions gives a p-value of 0.0111!
+
+  {\tiny Peter Bubenik, Statistical Topological Data Analysis using persistence landscapes,
+  JoMLR, 2015.}
+\end{frame}
+
+
+\begin{frame}{PH example: fMRI data}
+  \begin{itemize}
+    \item An fMRI patient has a screen in front of them. They tap
+	a pad every time a stimulus flashes on the screen. The stimuli flash both periodically,
+	randomly for 200 seconds. There are also rest periods.
+      \item We focus on a region of the brain known as the Anterior Cingulate Cortex (ACC).
+      \item {\bf Can persistent homology tell the difference between
+	these periods based on the fMRI signal?}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{PH example: fMRI data}
+  \begin{itemize}
+    \item The fMRI machine treats the brain as a 3-dimensional grid, so 
+      the data is 5-dimensional: $(x,y,z,t,\mathrm{BOLD})$.
+    \item For each time slice, compute the VR complex, and then the
+      barcodes and landscapes.
+    \item Average the periodic time periods, random time periods, and rest time periods.
+    \item Doing a permutation test with 10,000 repetitions gives:
+  \end{itemize}
+  \begin{minipage}{0.7\textwidth}
+    \centering
+    \includegraphics[scale=0.4]{ptest.png}
+  \end{minipage}
+  \begin{minipage}{0.25\textwidth}
+    \centering
+    \includegraphics[scale=0.15]{pl_h1.png}
+  \end{minipage}
+\end{frame}
+
+\section{Mapper and examples}
+\begin{frame}{Mapper}
+  Originally developed by Carlsson and Singh, Mapper provides a different approach
+  to classification of data.
+
+  \begin{enumerate}
+    \item Choose a `filter' function on the point cloud $f:P \ra \R$.
+    \item Cover $\R$ and pull back to cover the point cloud $P$ using $f$.
+    \item Within each open set, run single-linkage clustering
+    \item Draw a node for each cluster. Connect two nodes from different covers with an edge if they share linked points.
+  \end{enumerate}
+
+  \begin{center}
+    \includegraphics[scale=0.2]{mapper1.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Mapper properties}
+ \begin{itemize}
+   \item Mapper provides a different form of visualization of high dimensional
+     data compared to persistent homology.
+   \item Complimentary method to persistent homology, as well other 
+     statistical methods.
+   \item There are several parameters to be chosen. In particular, 
+     the {\color{red} filter function $f$} needs to be chosen carefully!
+ \end{itemize}
+
+ \begin{center}
+   \includegraphics[scale=0.5]{mapper_hand.png}
+ \end{center}
+ \end{frame}
+
+ \begin{frame}{Mapper examples: Breast cancer}
+   \centering
+   \includegraphics[scale=0.4]{mapper_cancer.png}
+ \end{frame}
+
+ \section{Implementation and resources}
+\begin{frame}{Algorithms}
+  There are lots of software packages implementing the algorithms of persistent homology:
+
+  \begin{minipage}{0.4\textwidth}
+    \centering
+    \underline{Persistent Homology:}
+  \begin{itemize}
+      \begin{multicols}{2}
+    \item Javaplex
+    \item Dionysus
+    \item Perseus
+    \item {\color{red} Ripser}
+    \item PHAT
+    \item GUDHI
+    \item CHOMP
+    \item SimBa
+    \item SimPers
+    \item Eirene
+    \item R-TDA
+    \end{multicols}
+  \end{itemize}
+\end{minipage}
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \underline{Vectorizations:}
+  \begin{itemize}
+    \item Persistence landscapes
+    \item Persistence images
+    \item Persistence silhouettes
+  \end{itemize}
+\end{minipage}
+\begin{minipage}{0.25\textwidth}
+  \centering
+  \underline{Mapper:}
+  \begin{itemize}
+    \item Pymapper
+    \item TDAmapper
+  \end{itemize}
+\end{minipage}
+\end{frame}
+
+  %\nocite{ghrist2017homological, carlsson_topology_2009, perea_brief_2018, wright}
+
+
+\begin{frame}{References}
+\nocite{ghrist2017homological, bubenik_statistical_2015, carlsson_topology_2009,
+oudot2015persistence, perea_brief_2018, wright}
+
+General Overviews:
+\printbibliography[keyword=intro]
+
+More technical introduction:
+\printbibliography[keyword=nintro]
+
+%  \nocite{bubenik_statistical_2015,oudot2015persistence}
+
+%  \printbibliography[title={More technical Overviews}]
+\end{frame}
 
 
 \end{document}
