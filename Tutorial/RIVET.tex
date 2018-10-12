@@ -13,10 +13,10 @@
 \begin{frame}{RIVET}
 \begin{itemize}
 \item Let's think about how this could go wrong and how we could fix it!
-\item We instead had data that looked like this:
+\item We had data that looked like this:
 \begin{figure}
 \begin{tikzpicture}[scale = 0.5]
-    \draw plot[mark=*, mark size = 1, only marks] file {data/data7.txt};
+    \draw plot[mark=*, mark size = 1.5, only marks] file {data/data7.txt};
 \end{tikzpicture}
 \end{figure} 
 \end{itemize}
@@ -24,51 +24,40 @@
 %---------------------------------------------------------------
 \begin{frame}{RIVET}
 \begin{itemize}
-\item This is a much more realistic example.
-\item The red points `noise' will make it hard to see the generator of $H_1$.
+\item<1-> This is a much more realistic example.
+\item<2-> The blue points -- noise -- will make it hard to see the generator of $H_1$.
 \begin{figure}
 \begin{tikzpicture}[scale = 0.5]
-    \draw plot[mark=*, mark size = 1, only marks] file {data/data7.txt};
-    \draw[color = red] plot[mark=*, mark size = 1, only marks] file {data/data7noise.txt};
+    \draw plot[mark=*, mark size = 1.5, only marks] file {data/data7.txt};
+    \draw[color = blue] plot[mark=*, mark size = 1.5, only marks] file {data/data7noise.txt};
 \end{tikzpicture}
 \end{figure} 
 \end{itemize}
 \end{frame}
 %---------------------------------------------------------------
 \begin{frame}{RIVET}
-The first barcode does not have the red point 'noise'.  The second barcode includes the red point 'noise'.
+The first barcode includes the entire data set.  The second barcode eliminates the blue 'noise'.
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.5]{images/data3rip.png}
+\includegraphics[scale=0.35]{images/data7.png}
 \end{figure} 
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.5]{images/data7rip.png}
+\includegraphics[scale=0.35]{images/data7nonoise.png}
 \end{figure} 
 \end{frame}
 %---------------------------------------------------------------
 \begin{frame}{RIVET}
 \begin{itemize}
 \item<1-> One way to deal with such situations: consider the density of the points.
-\item<2-> The red points are much less dense than the black points.
-\item<3-> Set a density threshold -- only include points that satisfy that threshold.
-\item<4-> Letting the density threshold vary results in \textit{multi-parameter persistence}!
-\end{itemize}
 \begin{figure}
-\begin{tikzpicture}[scale = 1.5]
-    \draw plot[mark=*, mark size = 0.5, only marks] file {data/data3.txt};
-    \draw[red, fill=red] (-0.3,-0.4) circle (.5pt);
-    \draw[red, fill=red] (-0.25,0.5) circle (.5pt);
-    \draw[red, fill=red] (-0.5,0.1) circle (.5pt);
-    \draw[red, fill=red] (0,0) circle (.5pt);
-    \draw[red, fill=red] (0.1,-0.5) circle (.5pt);
-    \draw[red, fill=red] (0.5,-0.3) circle (.5pt);
-    \draw[red, fill=red] (0.2,0.4) circle (.5pt);
-    \draw[red, fill=red] (0.4,0.1) circle (.5pt);
-\end{tikzpicture}
+\includegraphics[scale=0.2]{images/data7density}
+\caption{A density heat map of the data}
 \end{figure} 
+\item<2-> Letting the density threshold vary results in \textbf{multi-parameter persistence}!
+\end{itemize}
 \end{frame}
 %---------------------------------------------------------------
 \begin{frame}{RIVET}
