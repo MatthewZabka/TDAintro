@@ -7,7 +7,7 @@
 \begin{itemize}
 \item<1-> Start with a set of data in a metric space. Set $r=0$.
 \item<2-> Increase $r$. Create an edge between two points whenever the distance between them is less than $r$. This creates a graph.
-\item<3-> The graph defines a simplicial complex.
+\item<3-> The graph defines a simplicial complex via Vietoris-Rips.
 \item<4-> If a topological property (like a Betti number) \textit{persist} over a large range of $r$, we can conclude something about the structure of the data.
 \item<4-> In this case, we should expect to see $\beta_0=2$ over a large range of $r$. 
 \end{itemize}
@@ -32,7 +32,7 @@
 \item<1-> There are several programs that do persistence.
 \item<2-> We shall first look at RIPSER\cite{bauer2017ripser}.
 \item<3-> Developed by Ulrich Bauer, RIPSER is a very fast C++ program for computing Vietoris-Rips persistence barcodes.
-\item<4-> Let's try this on our data with two clusters
+\item<4-> Let's try this on our data with two clusters.
 \end{itemize}
 \end{frame}
 %-----------------------------------------------------
@@ -47,7 +47,7 @@
 \begin{center}
 \hyperref[https://github.com/MatthewZabka/MAA-NCS18.git]{\textcolor{blue}{\texttt{https://github.com/MatthewZabka/MAA-NCS18.git}}}
 \end{center}
-\item<2-> Input \texttt{data1.txt} into RISPER:
+\item<2-> Input \texttt{data1.txt} into RIPSER:
 \begin{center}
 \hyperref[https://live.ripser.org/]{\textcolor{blue}{\texttt{https://live.ripser.org/}}}
 \end{center}
@@ -100,6 +100,6 @@
 \item Input \texttt{data3.txt} into RIPSER. Confirm that one generator for $H_0$ and one generator for $H_1$ persist.
 \item Try inputting \texttt{data4.txt} into RIPSER up to distance 2. What can you say about the data's shape?
 \item Try some real data! \texttt{data5.txt} (up to distance 150) and \texttt{data6.txt} (up to distance 2)
-\item Data are located at:
+\item Data are located in the \texttt{data} folder that you have already downloaded!
 \end{itemize}
 \end{frame}

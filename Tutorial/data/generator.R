@@ -57,3 +57,10 @@ E <- cbind(r*sin(v)*cos(u), r*sin(v)*sin(u), r*cos(v))
 plot(E[,c(1,2)])
 plot(E[,c(1,3)])
 write.table(E, file = "data6.txt", row.names = FALSE, col.names = FALSE)
+
+# data7 will use data 3 and have new, outlier data in the middle of the circle
+
+temp1 <- rbind(c(-0.3,-0.4), c(-0.25,0.5), c(-0.5,0.1), c(0, 0), c(0.1,-0.5), c(0.5,-0.3), c(0.2,0.4), c(0.4,0.1))
+RIVETexample1 <- rbind(S1e, temp1)
+plot(RIVETexample1)
+write.table(RIVETexample1, file = "data7.txt", row.names = FALSE, col.names = FALSE)
