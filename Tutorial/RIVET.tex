@@ -1,7 +1,7 @@
 \begin{frame}{RIVET}
 \begin{itemize}
 \item<1-> Let's think about how this could go wrong and how we could fix it!
-\item<2-> Suppse that, instead of data that look like this:
+\item<2-> Suppose that, instead of data that look like this:
 \begin{figure}
 \begin{tikzpicture}[scale = 1.5]
     \draw plot[mark=*, mark size = 0.5, only marks] file {data/data3.txt};
@@ -66,7 +66,7 @@ The first barcode does not have the red point 'noise'.  The second barcode inclu
 \item<1-> One way to deal with such situations: consider the density of the points.
 \item<2-> The red points are much less dense than the black points.
 \item<3-> Set a density threshold -- only include points that satisfy that threshold.
-\item<4-> Letting the density threshold vary results in \textit{multiparameter persistence}!
+\item<4-> Letting the density threshold vary results in \textit{multi-parameter persistence}!
 \end{itemize}
 \begin{figure}
 \begin{tikzpicture}[scale = 1.5]
