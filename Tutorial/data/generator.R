@@ -68,3 +68,19 @@ data7nonoise <- data7[-which(fromO<2),]
 write.table(data7, file = "data7.txt", row.names = FALSE, col.names = FALSE)
 write.table(noise, file = "data7noise.txt", row.names = FALSE, col.names = FALSE)
 write.table(data7nonoise, file = "data7nonoise.txt", row.names = FALSE, col.names = FALSE)
+
+# data
+n     <- 500
+r     <- 1 # Radius of small
+R     <- 2 # Radius of big
+theta <- runif(n, min = 0, max = 2*pi)
+phi   <- runif(n, min = 0, max = 2*pi)
+x     <- (R+r*cos(theta))*cos(phi)
+y     <- (R+r*cos(theta))*sin(phi)
+z     <- r*sin(theta)
+e1 <- rnorm(n, 0, 0.2)
+e2 <- rnorm(n, 0, 0.2)
+e3 <- rnorm(n, 0, 0.3)
+T     <- cbind(x+e1,y+e1,4*z+e1)
+write.table(T, file = "torus.txt", row.name = FALSE, col.names = FALSE)
+plot(T[,1], T[,3])

@@ -81,13 +81,12 @@
 \caption{A slightly more realistic example \texttt{data3.txt}.}
 \end{figure}
 \end{center}
-\item<2-> Why is this also not realistic?
+\item<2-> Why is this also not realistic or impressive?
 \end{itemize}
 \end{frame}
 %------------------------------------------------------
 \begin{frame}{Persistent Homology}
 \begin{center}
-
 \begin{figure}
 \begin{tikzpicture}[scale = 0.5]
     \draw plot[mark=*, mark size = 0.5, only marks] file {data/data3.txt};
@@ -101,5 +100,46 @@
 \item Try inputting \texttt{data4.txt} into RIPSER up to distance 2. What can you say about the data's shape?
 \item Try some real data! \texttt{data5.txt} (up to distance 150) and \texttt{data6.txt} (up to distance 2)
 \item Data are located in the \texttt{data} folder that you have already downloaded!
+\end{itemize}
+\end{frame}
+%------------------------------------------------------
+\begin{frame}{Persistent Homology}
+\begin{center}
+{\Huge Discussion}
+\end{center}
+\end{frame}
+%------------------------------------------------------
+\begin{frame}{Combining Persistence and Other Methods}
+\begin{itemize}
+\item Suppose we had a barcode in dimension 1 that looked as follows:
+\begin{figure}
+\includegraphics[scale=0.5]{images/torusbar.png}
+\end{figure}
+\item What are are possibilities for the manifold on which the data lie?
+\end{itemize}
+\end{frame}
+%------------------------------------------------------
+\begin{frame}{Combining Persistence and Other Methods}
+\begin{itemize}
+\item Suppose we had a barcode in dimension 1 that looked as follows:
+\begin{figure}
+\includegraphics[scale=0.5]{images/torusbar.png}
+\end{figure}
+\item What are are possibilities for the manifold on which the data lie?
+\end{itemize}
+\end{frame}
+%------------------------------------------------------
+\begin{frame}{Combining Persistence and Other Methods}
+\begin{itemize}
+\item Suppose we had a barcode in dimension 1 that looked as follows:
+\begin{figure}
+\includegraphics[scale=0.5]{images/torusbar.png}
+\end{figure}
+\item Suppose we perform PCA and get the following projection
+\begin{figure}
+\includegraphics[scale=0.3]{images/torusPCA.png}
+\end{figure}
+\item What does PCA suggest about the dimension on the manifold? 
+\item What does this suggest about the space on which the data lie?
 \end{itemize}
 \end{frame}
