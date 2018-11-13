@@ -1,0 +1,163 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.0 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nty/global//global/global}
+  \entry{bubenik_statistical_2015}{article}{}
+    \name{author}{1}{}{%
+      {{hash=BP}{%
+         family={Bubenik},
+         familyi={B\bibinitperiod},
+         given={Peter},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \keyw{nintro}
+    \strng{namehash}{BP1}
+    \strng{fullhash}{BP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{number}{1}
+    \field{title}{Statistical topological data analysis using persistence
+  landscapes}
+    \field{volume}{16}
+    \field{journaltitle}{J. Mach. Lear. R.}
+    \field{year}{2015}
+  \endentry
+
+  \entry{carlsson_topology_2009}{article}{}
+    \name{author}{1}{}{%
+      {{hash=CG}{%
+         family={Carlsson},
+         familyi={C\bibinitperiod},
+         given={Gunnar},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \keyw{intro}
+    \strng{namehash}{CG1}
+    \strng{fullhash}{CG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{number}{2}
+    \field{pages}{255\bibrangedash 308}
+    \field{title}{Topology and data}
+    \field{volume}{46}
+    \field{journaltitle}{Bull. Amer. Math. Soc.}
+    \field{year}{2009}
+  \endentry
+
+  \entry{ghrist2017homological}{article}{}
+    \name{author}{1}{}{%
+      {{hash=GR}{%
+         family={Ghrist},
+         familyi={G\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \keyw{intro}
+    \strng{namehash}{GR1}
+    \strng{fullhash}{GR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{title}{Homological algebra and data}
+    \verb{url}
+    \verb https://www.math.upenn.edu/~ghrist/preprints/HAD.pdf
+    \endverb
+    \field{year}{2017}
+  \endentry
+
+  \entry{oudot2015persistence}{book}{}
+    \name{author}{1}{}{%
+      {{hash=OSY}{%
+         family={Oudot},
+         familyi={O\bibinitperiod},
+         given={Steve\bibnamedelima Y},
+         giveni={S\bibinitperiod\bibinitdelim Y\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Amer. Math. Soc. Providence, RI}%
+    }
+    \keyw{nintro}
+    \strng{namehash}{OSY1}
+    \strng{fullhash}{OSY1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{O}
+    \field{sortinithash}{O}
+    \field{title}{Persistence theory: from quiver representations to data
+  analysis}
+    \field{volume}{209}
+    \field{year}{2015}
+  \endentry
+
+  \entry{perea_brief_2018}{article}{}
+    \name{author}{1}{}{%
+      {{hash=PJA}{%
+         family={Perea},
+         familyi={P\bibinitperiod},
+         given={Jose\bibnamedelima A.},
+         giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \keyw{intro}
+    \strng{namehash}{PJA1}
+    \strng{fullhash}{PJA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{A Brief History of Persistence}
+    \verb{url}
+    \verb http://arxiv.org/abs/1809.03624
+    \endverb
+    \field{eprinttype}{arxiv}
+    \field{year}{2018}
+  \endentry
+
+  \entry{wright}{article}{}
+    \name{author}{1}{}{%
+      {{hash=WM}{%
+         family={Wright},
+         familyi={W\bibinitperiod},
+         given={Matthew},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \keyw{intro}
+    \strng{namehash}{WM1}
+    \strng{fullhash}{WM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{title}{Introduction to Persistent Homology - {YouTube}}
+    \verb{url}
+    \verb https://www.youtube.com/watch?v=h0bnG1Wavag
+    \endverb
+    \field{year}{2016}
+  \endentry
+\enddatalist
+\endinput

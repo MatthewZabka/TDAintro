@@ -1,0 +1,9 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {1}{Crash course in algebraic topology}{3}{0}{1}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {2}{Persistent Homology and examples}{7}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {3}{Mapper and examples}{35}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {4}{Implementation and resources}{38}{0}{4}
