@@ -12,7 +12,10 @@
 \setbeamertemplate{subsection in toc}[sections numbered]
 
 %%% Graphics 
-\usepackage{tikz}
+%\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{positioning, calc}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
 \usetikzlibrary{shapes,arrows.meta,decorations.markings}
 %\usepackage[all]{xy}
 %\usepackage{graphicx}
@@ -137,6 +140,7 @@ block=space
     minimum height=2em]
 %%%%%%%%%%%%%%%%%%%%%%%%
 
+%======================================================================
 
 \title{An Introduction to Topological Data Analysis}
 \author{Matthew Zabka}
@@ -154,6 +158,8 @@ block=space
 \begin{frame}{Outline}
   \tableofcontents
 \end{frame}
+
+%===========================================================================
 
 \section{Crash course in algebraic topology}
 \begin{frame}
@@ -175,6 +181,7 @@ block=space
   \end{block}
   \center{\fontsize{40}{40}\selectfont \textsf{A B C D}}
 \end{frame}
+%---------------------------------------------------------
 
 \begin{frame}
   \frametitle{Algebraic Topology}
@@ -195,6 +202,8 @@ block=space
   \center{\fontsize{40}{40}\selectfont \textsf{ {\color{red} A} B C {\color{red} {D}}}}
 \end{frame}
 
+%-------------------------------------------------------------------------------------------
+
 \begin{frame}{Invariants of topological spaces}
   \begin{itemize}
     \item Algebraic Topology assigns {\em invariants} to topological spaces.
@@ -206,6 +215,8 @@ block=space
       If the invariants are not the same, then the two spaces are not the same.
   \end{itemize}
 \end{frame}
+
+%================================================================================
 
 \section{Persistent Homology and examples}
 \begin{frame}{Topological Data Analysis}
@@ -241,6 +252,8 @@ block=space
   \end{itemize}
 \end{frame}
 
+%--------------------------------------------------------------------------------
+
 \begin{frame}{Overview of TDA}
   Topological data analysis comes in a variety of flavors. 
   
@@ -251,8 +264,7 @@ block=space
   \end{center}
 \end{frame}
 
-
-
+%------------------------------------------------------------------------
 
 \begin{frame}
   \frametitle{Simplicial Complexes}
@@ -263,6 +275,8 @@ block=space
     \includegraphics[scale=0.35]{images/Simplicial_complex_example.png}
   \end{center}
 \end{frame}
+
+%------------------------------------------------------------------------
 
 \begin{frame}
   \frametitle{Betti numbers of simplicial complexes}
@@ -286,6 +300,7 @@ block=space
   \bigskip
 \end{frame}
 
+%------------------------------------------------------------------------
 
 \begin{frame} \frametitle{Homology of simplicial complexes}
   \begin{definition}
@@ -418,6 +433,8 @@ block=space
 \end{center}
 \end{frame}
 
+%------------------------------------------------------------------------
+
 \begin{frame}
   \frametitle{Overview of PH}
 \centering
@@ -440,6 +457,8 @@ Persistent homology consists of the following pipeline: \\
   \end{tikzpicture}
 \end{frame}
 
+%------------------------------------------------------------------------
+
 \begin{frame}
   \frametitle{Overview of PH}
 \centering
@@ -459,6 +478,8 @@ Persistent homology consists of the following pipeline: \\
     \path [line, postaction={decorate}] (pd) -- (stat);
   \end{tikzpicture}
 \end{frame}
+
+%------------------------------------------------------------------------
 
 \begin{frame}
   \frametitle{Simplicial Complexes from Point data}
@@ -481,6 +502,8 @@ Persistent homology consists of the following pipeline: \\
   \end{center}
 \end{frame}
 
+%------------------------------------------------------------------------
+
 \begin{frame}{Vietoris-Rips parameter}
   \begin{block}{Question}
   How do we choose the correct radius for the Vietoris-Rips construction?
@@ -494,11 +517,15 @@ Often, there is no one ``right'' choice.
 \end{center}
 \end{frame}
 
+%------------------------------------------------------------------------
+
 \begin{frame}{Processing demo}
   \begin{center}
   Processing demo
 \end{center}
 \end{frame}
+
+%------------------------------------------------------------------------
 
 \begin{frame}{Overview of PH}
 \centering
@@ -520,6 +547,8 @@ Often, there is no one ``right'' choice.
   \end{tikzpicture}
 \end{frame}
 
+%------------------------------------------------------------------------
+
 \begin{frame}{Barcodes}
   \begin{itemize}
     \item The barcode provides a summary of how the homology changes as the
@@ -540,12 +569,342 @@ Often, there is no one ``right'' choice.
   \end{minipage}
 \end{minipage}
 \end{frame}
+  
+%==========================================================================
 
-\begin{frame}{Processing demo}
-  \begin{center} Processing demo \end{center}
-  \end{frame}
+\section{JPDwB Tutorial}  
+\begin{frame}{InteractiveJPDwB}
+\begin{itemize}
+\item Recall: Given a set of points $X$ and a parameter $r$, we can create a formal simplicial complex.
+\item Let the $n$-simplex $\{x_0, x_1, \ldots, x_n\}$ exist if and only if $d(x_i, x_j) < r$ for all $0 \leq i,j\leq n$. 
+\item We can visualize this process using InteractiveJPDwB.
+\end{itemize}
+\end{frame}
 
+%-------------------------------------------------------------------------
 
+\begin{frame}{InteractiveJPDwB}
+\begin{itemize}
+\item InteractiveJPDwB lets one visualize the generated simplicial complex for data in $\mathbb{R}^2$ and different values of $r$.
+\item In other words, it demonstrates $0$-th and $1$-st degree persistence homology via barcodes.
+\item Thanks to Michael Catanzaro, you can easily use this program on your own computer.
+\item You can download this program from:
+\begin{center}
+\hyperref[https://github.com/MatthewZabka/LaberLabs18]{\textcolor{blue}{\texttt{https://github.com/MatthewZabka/LaberLabs18}}}
+\end{center}
+\end{itemize}
+\end{frame}
+
+%-----------------------------------------------------------------------------
+
+\begin{frame}{Anwer the following!}
+\begin{center}
+\hyperref[https://github.com/MatthewZabka/LaberLabs18]{\textcolor{blue}{\texttt{https://github.com/MatthewZabka/LaberLabs18}}}
+\end{center}
+\begin{itemize}
+\item What is the minimum number of points required so that $\beta_1 = 1$ for some value of $r$?
+\item What is the minimum number of points required so that, for some $r$, we have $\beta_0 = 3$ and $\beta_1 = 2$?
+\item What is the largest degree of homology that is geometrically feasible in $\mathbb{R}^2$?
+\item What is the minimum number of points required to have $\beta_2 = 1$? In what dimension must the points lie?
+\item What is the minimum number of points required to have $\beta_n = 1$?  In what dimension must the points lie?
+\end{itemize}
+\end{frame}
+
+%-----------------------------------------------------------------------------
+
+\begin{frame}{Group Discussion}
+\begin{center}
+{\Huge Discussion}
+\end{center}
+\begin{itemize}
+\item What is the minimum number of points required so that $\beta_1 = 1$ for some value of $r$?
+\item What is the minimum number of points required so that, for some $r$, we have $\beta_0 = 3$ and $\beta_1 = 2$?
+\item What is the largest degree of homology that is geometrically feasible in $\mathbb{R}^2$?
+\item What is the minimum number of points required to have $\beta_2 = 1$? In what dimension must the points lie?
+\item What is the minimum number of points required to have $\beta_n = 1$?  In what dimension must the points lie?
+\end{itemize}
+\end{frame}
+
+%========================================================================
+\section{Persistence Homology and RIPSER}
+%------------------------------------------------------------------------
+
+\begin{frame}{Overview of Persistence Homology}
+\centering
+\begin{tikzpicture}[node distance = 2.5cm, auto, scale=0.8, decoration={
+      markings,
+      mark=at position 1 with {\arrow[scale=2,black]{latex}};
+    }
+  ]
+   % Place nodes
+    \node [block] (data) {Data};
+    \node [block, right of=data, node distance = 3cm] (simplex) {Filtered Simplicial Complex};
+    \node [block, right of=simplex,node distance = 5cm] (pd) {Barcodes};
+    \node [block, right of=pd, node distance = 3cm] (stat) {Statistics};
+   % Draw edges
+    \path [line, postaction={decorate}] (data) -- (simplex);
+    \path [line, postaction={decorate}] (simplex) -- (pd)
+    node [midway, label=above:Homology] {};
+    \path [line, postaction={decorate}] (pd) -- (stat);
+  \end{tikzpicture}
+\end{frame}
+
+%------------------------------------------------------------------------
+
+\begin{frame}{Barcodes}
+  \begin{itemize}
+    \item The barcode provides a summary of how the homology changes as the
+      radius varies in the Vietoris-Rips construction.
+    \item We look for topological features that `persist' over many values of radii.
+  \end{itemize}
+
+  Barcodes typically look like:
+
+  \begin{minipage}{\textwidth}
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \includegraphics[scale=0.25]{images/betti1.png}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \includegraphics[scale=0.25]{images/betti2.png}
+  \end{minipage}
+\end{minipage}
+\end{frame}
+%----------------------------------------------------------------
+\begin{frame}{Persistent Homology in Dimension 0 (Clustering)}
+\begin{center}
+\begin{tikzpicture}[scale = 1]
+    \draw plot[mark=*, mark size = 0.5, only marks] file {data/clust1.txt};
+    \draw plot[mark=*, mark size = 0.5, only marks] file {data/clust2.txt};
+\end{tikzpicture}
+\begin{itemize}
+\item<1-> Start with a set of data in a metric space. Set $r=0$.
+\item<2-> Increase $r$. Create an edge between two points whenever the distance between them is less than $r$. This creates a graph.
+\item<3-> The graph defines a simplicial complex via Vietoris-Rips.
+\item<4-> If a topological property (like a Betti number) \textit{persist} over a large range of $r$, we can conclude something about the structure of the data.
+\item<5-> In this case, we should expect to see $\beta_0=2$ over a large range of $r$. 
+\end{itemize}
+\end{center}
+\end{frame}
+%--------------------------------------------------------
+\begin{frame}{Persistent Homology in Dimension 0 (Clustering)}
+\begin{center}
+\begin{tikzpicture}[scale = 1]
+    \draw plot[mark=*, mark size = 0.5] file {data/clust1.txt};
+    \draw plot[mark=*, mark size = 0.5] file {data/clust2.txt};
+\end{tikzpicture}
+\end{center}
+\begin{itemize}
+\item<1-> A graph similar to this should persist over a large range of $r$.
+\item<2-> How could we see the clusters if these data did not lie in $\mathbb{R}^2$?
+\end{itemize}
+\end{frame}
+%-----------------------------------------------------
+\begin{frame}{RIPSER}
+\begin{itemize}
+\item<1-> There are several programs that do persistence.
+\item<2-> We shall first look at RIPSER.
+\item<3-> Developed by Ulrich Bauer, RIPSER is a very fast C++ program for computing Vietoris-Rips persistence barcodes.
+\item<4-> Let's try this on our data with two clusters.
+\end{itemize}
+\end{frame}
+%-----------------------------------------------------
+\begin{frame}{RIPSER}
+\begin{center}
+\begin{tikzpicture}[scale = 1]
+    \draw plot[mark=*, mark size = 0.5, only marks] file {data/cloud1.txt};
+\end{tikzpicture}
+\end{center}
+\begin{itemize}
+\item<1-> You should already have these data -- stored as a \underline{point cloud}.
+\begin{center}
+\hyperref[https://github.com/MatthewZabka/LaberLabs18]{\textcolor{blue}{\texttt{https://github.com/MatthewZabka/LaberLabs18}}}
+\end{center}
+\item<2-> Input \texttt{cloud1.txt} into RIPSER:
+\begin{center}
+\hyperref[https://live.ripser.org/]{\textcolor{blue}{\texttt{https://live.ripser.org/}}}
+\end{center}
+\end{itemize}
+\end{frame}
+%------------------------------------------------------
+\begin{frame}{Persistent Homology}
+\begin{itemize}
+\item<1-> Suppose we have data that lie on the circle.
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}[scale = 1.5]
+    \draw plot[mark=*, mark size = 0.5, only marks] file {data/cloud2.txt};
+\end{tikzpicture}
+\caption{An unrealistic example \texttt{cloud2.txt}, where data lie perfectly on $S^1$.}
+\end{figure}
+\end{center}
+\item<2-> Input \texttt{cloud2.txt} into RIPSER.
+\end{itemize}
+\end{frame}
+%------------------------------------------------------
+\begin{frame}{Persistent Homology}
+\begin{itemize}
+\item<1-> Suppose we have data that \textbf{almost} lie on the circle.
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}[scale = 1.5]
+    \draw plot[mark=*, mark size = 0.5, only marks] file {data/cloud3.txt};
+\end{tikzpicture}
+\caption{A slightly more realistic example \texttt{cloud3.txt}.}
+\end{figure}
+\end{center}
+\item<2-> We want to analyze data we cannot see!
+\end{itemize}
+\end{frame}
+%------------------------------------------------------
+\begin{frame}{Persistent Homology}
+\begin{center}
+\hyperref[https://github.com/MatthewZabka/LaberLabs18]{\textcolor{blue}{\texttt{https://github.com/MatthewZabka/LaberLabs18}}}
+\end{center}
+\begin{itemize}
+\item Now it is your turn! Data are located in the \texttt{RIPSERdata} folder that you have already downloaded!
+\item Input \texttt{cloud1.txt} int RIPSER. Confirm that two generators of $H_0$ persist. (i.e. $\beta_0 = 2$)
+\item Input \texttt{cloud2.txt} into RIPSER. Confirm that one generator for $H_0$ and one generator for $H_1$ persist. (i.e. $\beta_0 = 1$ and $\beta_1 = 1$)
+\item Input \texttt{cloud3.txt} into RIPSER. Confirm that one generator for $H_0$ and one generator for $H_1$ persist. (i.e. $\beta_0 = 1$ and $\beta_1 = 1$)
+\item Try inputting \texttt{cloud4.txt} into RIPSER up to distance 2. What can you say about the data's shape?
+\item Try some actual data! \texttt{cloud5.txt} (Test up to distance 150.)
+\item More actual data! \texttt{cloud6.txt} (Test up to distance 2.)
+\end{itemize}
+\end{frame}
+%------------------------------------------------------
+\begin{frame}{Persistent Homology}
+\begin{center}
+{\Huge Discussion}
+\end{center}
+\begin{itemize}
+\item What is the shape of \texttt{cloud4.txt}?
+\item What is the shape of \texttt{cloud5.txt}?
+\item What is the shape of \texttt{cloud6.txt}?
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------
+\begin{frame}{Combining Persistence and Other Methods}
+\begin{itemize}
+\item Suppose we had a barcode in dimension 1 that looked as follows:
+\begin{figure}
+\includegraphics[scale=0.5]{images/torusbar.png}
+\end{figure}
+\item What are are possibilities for the manifold on which the data lie?
+\end{itemize}
+\end{frame}
+%-------------------------------------
+\begin{frame}{Combining Persistence and Other Methods}
+\begin{itemize}
+\item Suppose we had a barcode in dimension 1 that looked as follows:
+\begin{figure}
+\includegraphics[scale=0.5]{images/torusbar.png}
+\end{figure}
+\item Suppose we perform PCA and get the following projection:
+\begin{figure}
+\includegraphics[scale=0.3]{images/torusPCA.png}
+\end{figure}
+\item What does PCA suggest about the dimension of the manifold? 
+\item What does this suggest about the space on which the data lie?
+\end{itemize}
+\end{frame}
+
+%=======================================================================
+
+\section{Multiparameter Persistence and RIVET}
+\begin{frame}{RIVET}
+\begin{itemize}
+\item<1-> Let's think about how this could go wrong and how we could fix it!
+\item<2-> Suppose that, instead of data that look like this:
+\begin{figure}
+\begin{tikzpicture}[scale = 1.5]
+    \draw plot[mark=*, mark size = 0.5, only marks] file {data/cloud3.txt};
+\end{tikzpicture}
+\end{figure} 
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------
+
+\begin{frame}{RIVET}
+\begin{itemize}
+\item Let's think about how this could go wrong and how we could fix it!
+\item We had data that looked like this:
+\begin{figure}
+\begin{tikzpicture}[scale = 0.5]
+    \draw plot[mark=*, mark size = 1.5, only marks] file {data/data7.txt};
+\end{tikzpicture}
+\end{figure} 
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------
+
+\begin{frame}{RIVET}
+\begin{itemize}
+\item<1-> This is a much more realistic example.
+\item<2-> The blue points -- noise -- will make it hard to see the generator of $H_1$.
+\begin{figure}
+\begin{tikzpicture}[scale = 0.5]
+    \draw plot[mark=*, mark size = 1.5, only marks] file {data/data7.txt};
+    \draw[color = blue] plot[mark=*, mark size = 1.5, only marks] file {data/data7noise.txt};
+\end{tikzpicture}
+\end{figure} 
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------
+
+\begin{frame}{RIVET}
+The first barcode includes the entire data set.  The second barcode eliminates the blue 'noise'.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{images/data7.png}
+\end{figure} 
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{images/data7nonoise.png}
+\end{figure} 
+\end{frame}
+
+%---------------------------------------------------------------
+
+\begin{frame}{RIVET}
+\begin{itemize}
+\item<1-> One way to deal with such situations: consider the density of the points.
+\begin{figure}
+\includegraphics[scale=0.2]{images/data7density}
+\caption{A density heat map of the data}
+\end{figure} 
+\item<2-> Letting the density threshold vary results in \textbf{multi-parameter persistence}!
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------
+
+\begin{frame}{RIVET}
+\begin{itemize}
+\item Michael Lesnick and Matthew Wright have written a program for visualizing multiparameter persistence.
+\item Installation is not so simple.
+\item Let us try to use RIVET on this example together.
+\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------
+
+\begin{frame}{RIVET}
+\begin{center}
+{\Huge Thank you!}\\
+
+\href{mailto:matthew.zabka@smsu.edu}{\textcolor{blue}{matthew.zabka@smsu.edu}}
+\end{center}
+\end{frame}
+
+%=========================================================================
+%==========================================================================
 
 \begin{frame}{References}
 \nocite{ghrist2017homological, bubenik_statistical_2015, carlsson_topology_2009,
@@ -558,9 +917,13 @@ General Overviews:
 More technical introduction:
 \printbibliography[keyword=nintro]
 
-%  \nocite{bubenik_statistical_2015,oudot2015persistence}
+\end{frame}
+%----------------------------------------------------------------------
+\begin{frame}{References}
+\nocite{Wolcott2016InteractiveJPDwB, bauer2017ripser, lesnick2015interactive}
 
-%  \printbibliography[title={More technical Overviews}]
+Software
+\printbibliography[keyword=software]
 \end{frame}
 
 
